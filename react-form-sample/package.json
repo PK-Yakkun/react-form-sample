@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "prepare": "cd .. && husky install react-form-sample/.husky"
   },
   "dependencies": {
     "next": "13.1.1",
@@ -19,6 +20,7 @@
     "@types/react-dom": "18.0.10",
     "eslint": "8.30.0",
     "eslint-config-next": "13.1.1",
-    "typescript": "4.9.4"
+    "typescript": "4.9.4",
+    "husky": "^8.0.0"
   }
 }
