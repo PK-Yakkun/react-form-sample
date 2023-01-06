@@ -1,2 +1,1 @@
-# react-form-sample
-ReactHookForm sample
+# React Form Sample
