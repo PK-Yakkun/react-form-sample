@@ -10,6 +10,7 @@ type FormValues = {
   domestic: boolean;
   abroad: boolean;
   space: boolean;
+  comment: string;
 };
 
 const Home: NextPage = () => {
@@ -33,106 +34,120 @@ const Home: NextPage = () => {
   /**
    * 各項目のログ監視用 コメントアウトして利用する
    */
-  console.log("name:", watch("name"));
-  console.log("email:", watch("email"));
-  console.log("gender:", watch("gender"));
-  console.log("travel:", watch("domestic"), watch("abroad"), watch("space"));
+  // console.log("name:", watch("name"));
+  // console.log("email:", watch("email"));
+  // console.log("gender:", watch("gender"));
+  // console.log("travel:", watch("domestic"), watch("abroad"), watch("space"));
+  // console.log("comment:", watch("comment"));
+
   return (
     <main>
       {/* "handleSubmit" は "onSubmit" を実行する前に入力検証を行う */}
       <form onSubmit={handleSubmit(onSubmit)}>
         <table>
-          <tr>
-            <th>
-              <label htmlFor="name">氏名</label>
-            </th>
-            <td>
-              <input
-                id="name"
-                {...register("name", { required: true })}
-                style={{
-                  border: `${
-                    errors.name ? "1px solid red" : "1px solid #8e8e8e"
-                  }`,
-                }}
-              />
-              {errors.name && (
-                <span style={{ color: "red" }}>氏名は必須項目です</span>
-              )}
-            </td>
-          </tr>
-          <tr>
-            <th>
-              <label htmlFor="gender">性別</label>
-            </th>
-            <td>
-              <input
-                id="men"
-                {...register("gender", { required: true })}
-                type="radio"
-                name="gender"
-                value="men"
-              />
-              <label htmlFor="men">男性</label>
-              <input
-                id="women"
-                {...register("gender", { required: true })}
-                type="radio"
-                name="gender"
-                value="women"
-              />
-              <label htmlFor="women">女性</label>
-              <input
-                id="other"
-                {...register("gender", { required: true })}
-                type="radio"
-                name="gender"
-                value="other"
-              />
-              <label htmlFor="other">未回答</label>
-            </td>
-            {errors.gender && <span>性別は必須項目です</span>}
-          </tr>
-          <tr>
-            <th>
-              <label htmlFor="email">メールアドレス</label>
-            </th>
-            <td>
-              <input
-                id="email"
-                {...register("email")}
-                style={{ border: "1px solid #8e8e8e" }}
-              />
-            </td>
-          </tr>
-          <tr>
-            <th>
-              <label>旅行するなら？（複数選択可）</label>
-            </th>
-            <td>
-              <label htmlFor="domestic">国内</label>
-              <input
-                id="domestic"
-                type="checkbox"
-                {...register("domestic")}
-                style={{ border: "1px solid #8e8e8e" }}
-              />
-              <label htmlFor="abroad">海外</label>
-              <input
-                id="abroad"
-                type="checkbox"
-                {...register("abroad")}
-                style={{ border: "1px solid #8e8e8e" }}
-              />
-              <label htmlFor="space">宇宙</label>
-              <input
-                id="space"
-                type="checkbox"
-                {...register("space")}
-                style={{ border: "1px solid #8e8e8e" }}
-              />
-            </td>
-          </tr>
+          <tbody>
+            <tr>
+              <th>
+                <label htmlFor="name">氏名</label>
+              </th>
+              <td>
+                <input
+                  id="name"
+                  {...register("name", { required: true })}
+                  style={{
+                    border: `${
+                      errors.name ? "1px solid red" : "1px solid #8e8e8e"
+                    }`,
+                  }}
+                />
+                {errors.name && (
+                  <span style={{ color: "red" }}>氏名は必須項目です</span>
+                )}
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <label htmlFor="gender">性別</label>
+              </th>
+              <td>
+                <input
+                  id="men"
+                  {...register("gender", { required: true })}
+                  type="radio"
+                  name="gender"
+                  value="men"
+                />
+                <label htmlFor="men">男性</label>
+                <input
+                  id="women"
+                  {...register("gender", { required: true })}
+                  type="radio"
+                  name="gender"
+                  value="women"
+                />
+                <label htmlFor="women">女性</label>
+                <input
+                  id="other"
+                  {...register("gender", { required: true })}
+                  type="radio"
+                  name="gender"
+                  value="other"
+                />
+                <label htmlFor="other">未回答</label>
+                {errors.gender && <span>性別は必須項目です</span>}
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <label htmlFor="email">メールアドレス</label>
+              </th>
+              <td>
+                <input
+                  id="email"
+                  {...register("email")}
+                  style={{ border: "1px solid #8e8e8e" }}
+                />
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <label>旅行するなら？（複数選択可）</label>
+              </th>
+              <td>
+                <label htmlFor="domestic">国内</label>
+                <input
+                  id="domestic"
+                  type="checkbox"
+                  {...register("domestic")}
+                  style={{ border: "1px solid #8e8e8e" }}
+                />
+                <label htmlFor="abroad">海外</label>
+                <input
+                  id="abroad"
+                  type="checkbox"
+                  {...register("abroad")}
+                  style={{ border: "1px solid #8e8e8e" }}
+                />
+                <label htmlFor="space">宇宙</label>
+                <input
+                  id="space"
+                  type="checkbox"
+                  {...register("space")}
+                  style={{ border: "1px solid #8e8e8e" }}
+                />
+              </td>
+            </tr>
+            <tr>
+              <th>自由記入欄</th>
+              <td>
+                <textarea
+                  id="comment"
+                  {...register("comment")}
+                  style={{ border: "1px solid #8e8e8e" }}
+                />
+              </td>
+            </tr>
+          </tbody>
         </table>
 
         <button type="submit" style={{ border: "1px solid #8e8e8e" }}>
