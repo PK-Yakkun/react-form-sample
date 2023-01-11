@@ -1,0 +1,13 @@
+* {
+  color: #333;
+}
+main {
+  max-width: 800px;
+  margin: 0 auto;
+}
+tr > * {
+  padding: 18px;
+}
+th {
+  vertical-align: middle;
+}
